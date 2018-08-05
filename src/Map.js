@@ -21,10 +21,10 @@ class Map extends Component {
 
     render() {
         return (
-            //note turney nf map!
+            //note turney for map!
             GoogleMap ? (
             <GoogleMap
-                zoom = { this.props.zoom }
+                defaultZoom = { this.props.zoom }
                 defaultCenter = { this.props.center }
                 onDragEnd ={ (e) => { this.mapLocation(this)}}
                 options = {{

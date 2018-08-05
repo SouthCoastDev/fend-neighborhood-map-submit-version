@@ -20,9 +20,6 @@ class App extends Component {
     googleAPIKey: "AIzaSyB-9uIpr6zMqh5ivdYUzll0aiPrejC31D0"
   }
 
-
-
-
   //should the map location change then up date the map state.
   // mapLocationChanged = (newLat,newLng) => {
 
@@ -49,7 +46,6 @@ class App extends Component {
          selectedVenue : null
       })
     }
-
 
   componentDidMount() {
 
@@ -79,7 +75,7 @@ class App extends Component {
     return (
       <div className="App main" role="main" >
 
-
+      <Header/>
 
       <div className="sidebar" aria-label="sidebar">
           {!!this.state.venues.length &&
