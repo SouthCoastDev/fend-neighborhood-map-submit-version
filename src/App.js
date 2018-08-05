@@ -93,7 +93,7 @@ class App extends Component {
               loadingElement = { <div style={{ height: `100%` }} /> }
               containerElement = { <div style={{ height: `100%` }} /> }
               mapElement = { <div style={{ height: `100%` }} /> }
-              center = { this.state.center }
+              center = { this.state.mapCenter }
               zoom = {this.state.zoom}
               markers = { this.state.filteredVenues }
               selectedMarker ={ this.state.selectedVenue }

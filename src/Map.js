@@ -21,12 +21,12 @@ class Map extends Component {
 
     render() {
         return (
-            //note turney for map!
+            //note turney for map! checks if is null and returns error message if nothing is found.
             GoogleMap ? (
             <GoogleMap
                 defaultZoom = { this.props.zoom }
                 defaultCenter = { this.props.center }
-                onDragEnd ={ (e) => { this.mapLocation(this)}}
+                onDragEnd ={ (e) => { this.mapLocation(this)} }
                 options = {{
                      streetViewControl: false,
                      mapTypeControl: true
@@ -36,20 +36,27 @@ class Map extends Component {
                 {
                 this.props.markers.map((venue, index) => (
                     <CustomMarker
+                    //venue info
                         key = { index }
                         id = { venue.id }
                         address = { venue.address}
                         position = { venue.location }
                         title = { venue.name }
-
+                    //marker info
                         animation = { !!this.props.selectedMarker && venue.id === this.props.selectedMarker.id ? 1 : 2 }
+                        isOpen = { !!this.props.selectedMarker && venue.id === this.props.selectedMarker.id }
                         openwindow = { () => this.props.openWindow(venue) }
                         closewindow = { this.props.closeWindow }
-                        isOpen = { !!this.props.selectedMarker && venue.id === this.props.selectedMarker.id }
                     >
                     </CustomMarker>
                 ))
                 }
+
+
+        {this.props.markers.map((venue, index) => (
+                    console.log(venue.id)
+                    ))
+        }
             </GoogleMap>
             ) : (
                 <div><h3>Google Maps hasn't loaded! Have a word with Google please...!</h3></div>
