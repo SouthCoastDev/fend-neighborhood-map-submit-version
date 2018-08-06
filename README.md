@@ -3,14 +3,16 @@
 ## How to run
 
 Download the repo.
+You must have Node js installed!
 
-Run $ npm install
+then run:
+$ npm install -g serve
+followed by:
+$ serve -s build
 
-Then create a build version of the app with:
+The app should then be found running on locathost port 5000.
 
-$ npm run serve
-
-The app should then be found running on localhost port 5000
+This version is the deployed version and so the service worker will work correctly.
 
 ## Extra Packages Used
 
