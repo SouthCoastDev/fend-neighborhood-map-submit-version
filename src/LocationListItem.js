@@ -15,7 +15,6 @@ class LocationListItem extends Component {
                 onKeyPress={this.venueClicked}
                 className='list-item'
                 key=  { this.props.venue.id }
-                tabIndex={2}
                 role = 'location list button'
             >
                 {this.props.venue.name}

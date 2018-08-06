@@ -17,7 +17,8 @@ class App extends Component {
     venues: [],
     selectedVenue: null,
     zoom: 14,
-    googleAPIKey: "AIzaSyB-9uIpr6zMqh5ivdYUzll0aiPrejC31D0"
+    googleAPIKey: "AIzaSyB-9uIpr6zMqh5ivdYUzll0aiPrejC31D0",
+    mapLoaded : false
   }
 
   //should the map location change then up date the map state.
@@ -28,6 +29,14 @@ class App extends Component {
   //   })
 
   //fetch(`https://api.foursquare.com/v2/venues/explore?ll=${this.state.mapCenter.lat},${this.state.mapCenter.lng}&query=${this.state.query}&v=20180728&limit=20&intent=browse&radius=700&client_id=HL2DKKQVAF2R03TLS5GNWB4WXDTV1FGEZHNRNIN4VTD1V44S&client_secret=GA2DERTJQTIC1ZBE3G3I2UPNRE4I00OS0DR2GYJPE14IGCSJ&X-RateLimit-Remaining`)
+
+  googleError() {
+    alert("google maps didn't load!")
+  }
+
+    gm_authFailure() {
+      alert("google maps didn't load!")
+    }
 
     setVenue = (selectedVenue) => {
       this.setState({
@@ -48,6 +57,10 @@ class App extends Component {
     }
 
   componentDidMount() {
+
+    this.setState({
+      mapLoaded : true
+    })
 
     //venue infomation is from the Foursquare venue api
       console.log("component did mount ran... for App.js")
@@ -77,16 +90,18 @@ class App extends Component {
 
       <Header/>
 
-      <div className="sidebar" aria-label="sidebar">
-          {!!this.state.venues.length &&
+      <div className="sidebar" tabIndex="1" aria-label="sidebar">
+          {!!this.state.venues.length ? (
             <SideBar
               onClick = { this.setVenue }
               onChange = { this.updateFilteredVenues }
               venues = { this.state.venues }
             />
+          ) : (<div><p>No Venues found! Either you are not connected to the internet or the Foursquare API is broken!</p></div>)
           }
         </div>
-          <div className="map-container" aria-label="application" role="application">
+        {this.state.mapLoaded ? (
+          <div className="map-container" aria-label="application" role="application" tabIndex="4">
           {/* map infomation is from Google maps and the npm package react-google-maps */}
             <Map
               googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${this.state.googleAPIKey}&v=3`}
@@ -99,9 +114,9 @@ class App extends Component {
               selectedMarker ={ this.state.selectedVenue }
               openWindow = { this.setVenue }
               closeWindow = { this.clearSelectedVenue }
-              />
-          </div>
-
+            />
+          </div>)
+          : (<div>ERROR the map didn't load </div>)}
         <Footer/>
 
       </div>
