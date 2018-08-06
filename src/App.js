@@ -5,6 +5,9 @@ import SideBar from "./SideBar"
 import Footer from "./Footer"
 import Map from "./Map"
 
+function gm_authFailure() {
+  alert("Google Map authorization error. Please check your connection or API key.")
+}
 
 class App extends Component {
 
@@ -30,13 +33,16 @@ class App extends Component {
 
   //fetch(`https://api.foursquare.com/v2/venues/explore?ll=${this.state.mapCenter.lat},${this.state.mapCenter.lng}&query=${this.state.query}&v=20180728&limit=20&intent=browse&radius=700&client_id=HL2DKKQVAF2R03TLS5GNWB4WXDTV1FGEZHNRNIN4VTD1V44S&client_secret=GA2DERTJQTIC1ZBE3G3I2UPNRE4I00OS0DR2GYJPE14IGCSJ&X-RateLimit-Remaining`)
 
-  googleError() {
+  googleError = () => {
     alert("google maps didn't load!")
   }
 
     gm_authFailure() {
       alert("google maps didn't load!")
     }
+
+
+
 
     setVenue = (selectedVenue) => {
       this.setState({
