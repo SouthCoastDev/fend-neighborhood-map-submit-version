@@ -33,13 +33,6 @@ class App extends Component {
 
   //fetch(`https://api.foursquare.com/v2/venues/explore?ll=${this.state.mapCenter.lat},${this.state.mapCenter.lng}&query=${this.state.query}&v=20180728&limit=20&intent=browse&radius=700&client_id=HL2DKKQVAF2R03TLS5GNWB4WXDTV1FGEZHNRNIN4VTD1V44S&client_secret=GA2DERTJQTIC1ZBE3G3I2UPNRE4I00OS0DR2GYJPE14IGCSJ&X-RateLimit-Remaining`)
 
-  googleError = () => {
-    alert("google maps didn't load!")
-  }
-
-    gm_authFailure() {
-      alert("google maps didn't load!")
-    }
 
 
 
@@ -64,6 +57,11 @@ class App extends Component {
 
   componentDidMount() {
 
+    gm_authFailure = () => {
+          alert("google maps didn't load!")
+    }
+
+
     this.setState({
       mapLoaded : true
     })
@@ -82,7 +80,6 @@ class App extends Component {
         this.setState({
           venues: data.response.venues
         })
-        console.log(this.state.venues)
       }).catch((error) => {
         console.log("Error with the FourSquare API - Please check you connection or you Foursquare key. Error given: " +  error)
         alert("Error with the FourSquare API - Please check you connection or you Foursquare key.")
@@ -96,7 +93,7 @@ class App extends Component {
 
       <Header/>
 
-      <div className="sidebar" tabIndex="1" aria-label="sidebar">
+      <div className="sidebar" tabIndex="0" aria-label="sidebar">
           {!!this.state.venues.length ? (
             <SideBar
               onClick = { this.setVenue }

@@ -11,11 +11,12 @@ class LocationListItem extends Component {
 
         return (
             <li
-                onClick={this.venueClicked}
-                onKeyPress={this.venueClicked}
-                className='list-item'
+                tabIndex= { 1 }
+                onClick = { this.venueClicked }
+                onKeyPress = { this.venueClicked }
+                className = "list-item"
                 key=  { this.props.venue.id }
-                role = 'location list button'
+                role = "Listitem"
             >
                 {this.props.venue.name}
             </li>

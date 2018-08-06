@@ -19,7 +19,16 @@ class Map extends Component {
     }
 
 
+    componentDidMount() {
+
+        window.gm_authFailure = () => {
+            alert("Error with auth key for google maps! Try a different key or try agian later!");
+          }
+    }
+
+
     render() {
+        console.log(this.props.markers.map((venue, index) => (venue)))
         return (
             //note turney for map! checks if is null and returns error message if nothing is found.
             GoogleMap ? (
@@ -39,7 +48,7 @@ class Map extends Component {
                     //venue info
                         key = { index }
                         id = { venue.id }
-                        address = { venue.address}
+                        address = { venue.location.formattedAddress }
                         position = { venue.location }
                         title = { venue.name }
                     //marker info

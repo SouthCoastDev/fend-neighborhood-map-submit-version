@@ -12,6 +12,7 @@ class CustomMarker extends Component {
                 title = { this.props.title }
                 animation = { this.props.animation }
                 onClick = { this.props.openwindow }
+                address = { this.props.address}
             >
 		        {this.props.isOpen &&
                     <InfoWindow
@@ -19,7 +20,7 @@ class CustomMarker extends Component {
                     >
                         <div>
                             <h4 className = "venue">{this.props.title}</h4>
-                            <div className = "address"><p>{this.props.address}</p></div>
+                            <div className = "address"><p>{ this.props.address }</p></div>
                             <div className = "attribution"><p>Location Data from : FourSquare API</p></div>
                         </div>
                     </InfoWindow>
