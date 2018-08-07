@@ -32,7 +32,7 @@ class SearchFilter extends Component {
         })
 
         return  (
-            <div className = "search" tabIndex={0}>
+            <div className = "search" tabIndex={-1}>
                 <input
                     className='search-input'
                     placeholder = "Find a venue"
@@ -43,7 +43,7 @@ class SearchFilter extends Component {
                     autoFocus = { true }
                 />
 
-                <ul tabIndex={0} className ='venue-list'>
+                <ul tabIndex={ -1 } className ='venue-list'>
                     {list}
                 </ul>
             </div>

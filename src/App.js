@@ -93,7 +93,7 @@ class App extends Component {
 
       <Header/>
 
-      <div className="sidebar" tabIndex="0" aria-label="sidebar">
+      <div className="sidebar" tabIndex="-1" aria-label="sidebar">
           {!!this.state.venues.length ? (
             <SideBar
               onClick = { this.setVenue }
@@ -104,7 +104,7 @@ class App extends Component {
           }
         </div>
         {this.state.mapLoaded ? (
-          <div className="map-container" aria-label="application" role="application" tabIndex="4">
+          <div className="map-container" aria-label="application" role="application" tabIndex="-1">
           {/* map infomation is from Google maps and the npm package react-google-maps */}
             <Map
               googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${this.state.googleAPIKey}&v=3`}
